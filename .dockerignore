@@ -1,0 +1,7 @@
+# Ignora apenas o que não é necessário para o build
+target/
+.idea/
+.git/
+.gitignore
+*.iml
+*.log
