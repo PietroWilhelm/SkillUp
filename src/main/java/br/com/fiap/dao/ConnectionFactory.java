@@ -28,6 +28,10 @@ public class ConnectionFactory {
             String user = System.getenv("DB_USER");
             String password = System.getenv("DB_PASSWORD");
 
+            if (url == null || user == null || password == null) {
+                throw new RuntimeException("Variáveis de ambiente do banco não configuradas");
+            }
+
             connection = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             System.out.println("Erro de SQL: " + e.getMessage());
