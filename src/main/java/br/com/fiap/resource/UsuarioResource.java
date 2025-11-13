@@ -16,7 +16,7 @@ public class UsuarioResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(UsuarioBO usuarioBO) {
+    public Response findAll() {
         ArrayList<Usuario> resultado = usuarioBO.listarTodos();
         Response.ResponseBuilder response = null;
         if (resultado != null) {

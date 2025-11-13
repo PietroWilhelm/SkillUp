@@ -66,7 +66,7 @@ public class RecomendacaoResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarTodas( Recomendacao resultado) {
+    public Response listarTodas() {
         try {
             List<Recomendacao> lista = bo.listarTodas();
             return Response.ok(lista).build();
