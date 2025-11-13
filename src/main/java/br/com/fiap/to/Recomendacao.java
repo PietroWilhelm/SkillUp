@@ -1,16 +1,25 @@
 package br.com.fiap.to;
 
-import java.time.LocalDate;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 public class Recomendacao {
 
     private int idRecomendacao;
+
+    @Min(value = 1, message = "O valor de relevância deve ser maior ou igual a 1.")
     private int valorRelevancia;
+
+    @NotBlank(message = "A descrição do motivo é obrigatória.")
     private String descricaoMotivo;
     private int idCurso;
     private int idUsuario;
+
+    // Campos derivados de JOIN — não recebem validação obrigatória
     private String nomeUsuario;
     private String nomeCurso;
+
     // Construtores
     public Recomendacao() {}
 

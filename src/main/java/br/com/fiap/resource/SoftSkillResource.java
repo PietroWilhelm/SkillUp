@@ -2,6 +2,7 @@ package br.com.fiap.resource;
 
 import br.com.fiap.bo.SoftSkillBO;
 import br.com.fiap.to.SoftSkill;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -16,7 +17,7 @@ public class SoftSkillResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll() {
+    public Response findAll(@Valid SoftSkillBO softSkillBO) {
         Response.ResponseBuilder response;
         List<SoftSkill> resultado;
 
@@ -40,7 +41,7 @@ public class SoftSkillResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response insert(SoftSkill softSkill) {
+    public Response insert(@Valid SoftSkill softSkill) {
         Response.ResponseBuilder response;
 
         try {
@@ -60,7 +61,7 @@ public class SoftSkillResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") int id, SoftSkill softSkill) {
+    public Response update(@Valid @PathParam("id") int id, SoftSkill softSkill) {
         Response.ResponseBuilder response;
 
         try {
@@ -78,7 +79,7 @@ public class SoftSkillResource {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("id") int id) {
+    public Response delete(@Valid @PathParam("id") int id) {
         Response.ResponseBuilder response;
         SoftSkill softSkill = new SoftSkill();
         softSkill.setIdSoftSkill(id);

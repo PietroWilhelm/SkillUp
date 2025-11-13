@@ -2,6 +2,7 @@ package br.com.fiap.resource;
 
 import br.com.fiap.bo.UsuarioBO;
 import br.com.fiap.to.Usuario;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -15,7 +16,7 @@ public class UsuarioResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll() {
+    public Response findAll(@Valid UsuarioBO usuarioBO) {
         ArrayList<Usuario> resultado = usuarioBO.listarTodos();
         Response.ResponseBuilder response = null;
         if (resultado != null) {
@@ -30,7 +31,7 @@ public class UsuarioResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findById(@PathParam("id") int id) {
+    public Response findById(@Valid @PathParam("id") int id) {
         Usuario resultado = usuarioBO.buscarUsuarioPorId(id);
         Response.ResponseBuilder response = null;
         if (resultado != null) {
@@ -45,7 +46,7 @@ public class UsuarioResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(Usuario user) {
+    public Response save(@Valid Usuario user) {
         try {
             Usuario resultado = usuarioBO.cadastrarUsuario(user);
             if (resultado != null) {
@@ -68,7 +69,7 @@ public class UsuarioResource {
 
     @DELETE
     @Path("/{id}")
-    public Response delete(@PathParam("id") int id) {
+    public Response delete(@Valid @PathParam("id") int id) {
         boolean sucesso = usuarioBO.excluirUsuario(id);
         Response.ResponseBuilder response = null;
         if (sucesso) {
@@ -82,7 +83,7 @@ public class UsuarioResource {
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response update( Usuario user, @PathParam("id") int id) {
+    public Response update(@Valid Usuario user, @PathParam("id") int id) {
         user.setIdUsuario(id);
         Usuario resultado = usuarioBO.atualizarUsuario(user);
         Response.ResponseBuilder response = null;

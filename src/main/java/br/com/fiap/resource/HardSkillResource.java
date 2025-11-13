@@ -2,6 +2,7 @@ package br.com.fiap.resource;
 
 import br.com.fiap.bo.HardSkillBO;
 import br.com.fiap.to.HardSkill;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -16,7 +17,7 @@ public class HardSkillResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarTodos() {
+    public Response listarTodos(@Valid HardSkillBO hardSkillBO) {
         Response.ResponseBuilder response;
         List<HardSkill> lista;
 
@@ -40,7 +41,7 @@ public class HardSkillResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(HardSkill hardSkill) {
+    public Response save(@Valid HardSkill hardSkill) {
         Response.ResponseBuilder response;
         String resultado;
 
@@ -59,7 +60,7 @@ public class HardSkillResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") int id, HardSkill hardSkill) {
+    public Response update(@Valid @PathParam("id") int id, HardSkill hardSkill) {
         Response.ResponseBuilder response;
         String resultado;
 
@@ -78,7 +79,7 @@ public class HardSkillResource {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("id") int id) {
+    public Response delete(@Valid @PathParam("id") int id) {
         Response.ResponseBuilder response;
         HardSkill hardSkill = new HardSkill();
         hardSkill.setIdHardSkill(id);

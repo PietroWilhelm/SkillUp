@@ -1,14 +1,19 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class UsuarioHardSkill {
 
     private int idUsuario;
     private int idHardSkill;
+    @NotBlank(message = "Deve conter o nível de conhecimento ex: Básico, Intermédiario e Avançado")
     private String nivelConhecimento;
+
+    //
     private String nomeUsuario;
     private String nomeHardSkill;
 
-    // Construtor para INSERT
+    // Construtor
     public UsuarioHardSkill(int idUsuario, int idHardSkill ,String nivelConhecimento,  String nomeUsuario,String nomeHardSkill ) {
         this.idUsuario = idUsuario;
         this.idHardSkill = idHardSkill;

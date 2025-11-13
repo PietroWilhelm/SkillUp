@@ -2,6 +2,7 @@ package br.com.fiap.resource;
 
 import br.com.fiap.bo.ResultadoBO;
 import br.com.fiap.to.Recomendacao;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -14,7 +15,7 @@ public class RecomendacaoResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response cadastrar(Recomendacao resultado) {
+    public Response cadastrar(@Valid Recomendacao resultado) {
         try {
             String resp = bo.inserir(resultado);
             return Response.status(201).entity(resp).build();
@@ -27,7 +28,7 @@ public class RecomendacaoResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response atualizar(@PathParam("id") int id, Recomendacao recomendacao) {
+    public Response atualizar(@Valid @PathParam("id") int id, Recomendacao recomendacao) {
         try {
             recomendacao.setIdRecomendacao(id);
             String resp = bo.atualizar(recomendacao);
@@ -40,7 +41,7 @@ public class RecomendacaoResource {
 
     @DELETE
     @Path("/{id}")
-    public Response remover(@PathParam("id") int id) {
+    public Response remover(@Valid @PathParam("id") int id) {
         try {
             Recomendacao resultado = new Recomendacao();
             resultado.setIdRecomendacao(id);
@@ -54,7 +55,7 @@ public class RecomendacaoResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscarPorId(@PathParam("id") int id) {
+    public Response buscarPorId(@Valid @PathParam("id") int id) {
         try {
             String resp = bo.buscarPorId(id);
             return Response.ok(resp).build();
@@ -66,7 +67,7 @@ public class RecomendacaoResource {
     @GET
     @Path("/usuario/{idUsuario}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarPorPaciente(@PathParam("idUsuario") int idPaciente) {
+    public Response listarPorPaciente(@Valid @PathParam("idUsuario") int idPaciente) {
         try {
             List<Recomendacao> lista = bo.listarPorUsuario(idPaciente);
             return Response.ok(lista).build();
@@ -77,7 +78,7 @@ public class RecomendacaoResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarTodas() {
+    public Response listarTodas(@Valid Recomendacao resultado) {
         try {
             List<Recomendacao> lista = bo.listarTodas();
             return Response.ok(lista).build();

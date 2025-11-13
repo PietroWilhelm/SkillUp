@@ -1,10 +1,15 @@
 package br.com.fiap.to;
 
 
+import jakarta.validation.constraints.NotBlank;
+
 public class UsuarioSoftSkill {
     private int idUsuario;
     private int idSoftSkill;
+    @NotBlank(message = "Deve ser preenchido o nível de Domínio")
     private String nivelDominio;
+
+    // Atributos auxiliares para Join, não precisa de Validator
     private String nomeUsuario;
     private String nomeSoftSkill;
 

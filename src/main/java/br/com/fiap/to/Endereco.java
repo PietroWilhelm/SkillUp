@@ -1,13 +1,27 @@
 package br.com.fiap.to;
+import jakarta.validation.constraints.*;
+
 public class Endereco {
     //Atributos
     private int idEndereco;
+
+    @NotBlank(message = "O logradouro é obrigatório.")
     private String dsLogradouro;
+
     private int numero;
+
+    @NotBlank(message = "O estado é obrigatório.")
     private String dsEstado;
+
+    @NotBlank(message = "A cidade é obrigatória.")
     private String dsCidade;
+
+    @NotBlank(message = "O CEP é obrigatório.")
+    @Pattern(regexp = "\\d{5}-?\\d{3}", message = "CEP inválido. Use o formato 00000-000.")
     private String nrCep;
-    private int idUsuario; // FK para SU_USUARIO
+
+    private int idUsuario;
+
 
     //Construtor
     public  Endereco() {}

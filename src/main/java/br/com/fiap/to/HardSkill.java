@@ -1,13 +1,21 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+
 import javax.swing.*;
 
 public class HardSkill {
 
     //Atributos
     private int idHardSkill;
+
+    @NotBlank(message = "O nome da HardSkill é obrigatória.")
     private String nomeHardSkill;
+
+    @NotBlank(message = "A Descrição da HardSkill é obrigatório.")
     private String descricaoHardSkill;
+
+    @NotBlank(message = "A Categoria da HardSkill é obrigatório.")
     private String categoriaHardSkill;
 
     //Construtores

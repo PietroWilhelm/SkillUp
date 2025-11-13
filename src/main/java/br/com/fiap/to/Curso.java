@@ -1,15 +1,24 @@
 package br.com.fiap.to;
 
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class Curso {
-
     // Atributos
+    // ID deve existir para updates, mas não para inserts → não validamos aqui
     private int idCurso;
+
+    @NotBlank(message = "O nome do curso é obrigatório.")
     private String nome;
+
+    @NotBlank(message = "A área do curso é obrigatória.")
     private String area;
+
+    @NotBlank(message = "O nível do curso é obrigatório.")
     private String nivel;
-    private int cargaHoraria;
+
+    @NotNull(message = "A carga horária é obrigatória.")
+    private int cargaHoraria;;
 
     // Construtor vazio
     public Curso() {}

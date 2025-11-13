@@ -43,6 +43,11 @@
             <artifactId>ojdbc11</artifactId>
             <version>23.9.0.25.07</version>
         </dependency>
+        <!-- Bean Validation (Jakarta Validation) -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-arc</artifactId>

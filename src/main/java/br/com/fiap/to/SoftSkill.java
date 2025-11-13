@@ -1,11 +1,15 @@
 package br.com.fiap.to;
 
 
+import jakarta.validation.constraints.NotBlank;
+
 public class SoftSkill {
 
     // Atributos
     private int idSoftSkill;
+    @NotBlank(message = "O nome da SoftSkill é obrigatória.")
     private String nomeSofSkill;
+    @NotBlank(message = "A Descrição da SoftSkill é obrigatória.")
     private String descricaoSofSkill;
 
     // Construtores

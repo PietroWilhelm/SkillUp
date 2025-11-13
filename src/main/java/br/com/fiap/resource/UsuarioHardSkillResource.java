@@ -4,6 +4,7 @@ import br.com.fiap.bo.UsuarioHardSkillBO;
 
 import br.com.fiap.to.HardSkill;
 import br.com.fiap.to.UsuarioHardSkill;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -18,7 +19,7 @@ public class UsuarioHardSkillResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll() {
+    public Response findAll(@Valid UsuarioHardSkill usuarioHardSkill) {
         Response.ResponseBuilder response;
         List<UsuarioHardSkill> resultado;
         try {
@@ -39,7 +40,7 @@ public class UsuarioHardSkillResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(UsuarioHardSkill usuarioHardSkill) {
+    public Response save(@Valid UsuarioHardSkill usuarioHardSkill) {
         Response.ResponseBuilder response;
         String resultado;
 
@@ -58,7 +59,7 @@ public class UsuarioHardSkillResource {
     @Path("/{idUsuario}/{idHardSkill}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response atualizar(@PathParam("idUsuario") int idUsuario,
+    public Response atualizar(@Valid @PathParam("idUsuario") int idUsuario,
                               @PathParam("idHardSkill") int idHardSkill,
                               UsuarioHardSkill body) {
         try {
@@ -79,7 +80,7 @@ public class UsuarioHardSkillResource {
     @DELETE
     @Path("/{idUsuario}/{idHardSkill}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response excluir(@PathParam("idUsuario") int idUsuario,
+    public Response excluir(@Valid @PathParam("idUsuario") int idUsuario,
                             @PathParam("idHardSkill") int idHardSkill) {
         try {
             UsuarioHardSkill uhs = new UsuarioHardSkill();

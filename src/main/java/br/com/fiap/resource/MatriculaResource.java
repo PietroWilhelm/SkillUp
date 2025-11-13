@@ -3,6 +3,7 @@ package br.com.fiap.resource;
 import br.com.fiap.bo.MatriculaBO;
 
 import br.com.fiap.to.Matricula;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -16,7 +17,7 @@ public class MatriculaResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response cadastrar(Matricula matricula) {
+    public Response cadastrar(@Valid Matricula matricula) {
         try {
             bo.inserir(matricula);
             return Response.status(Response.Status.CREATED).build(); // 201
@@ -43,7 +44,7 @@ public class MatriculaResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") int id, Matricula matricula) {
+    public Response update(@Valid @PathParam("id") int id, Matricula matricula) {
         MatriculaBO bo = new MatriculaBO();
         Response.ResponseBuilder response;
         try {
@@ -61,7 +62,7 @@ public class MatriculaResource {
     @DELETE
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delete(@PathParam("id") int id) {
+    public Response delete(@Valid @PathParam("id") int id) {
         Response.ResponseBuilder response;
         MatriculaBO bo = new MatriculaBO();
         try {

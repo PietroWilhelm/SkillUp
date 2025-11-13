@@ -2,6 +2,7 @@ package br.com.fiap.resource;
 
 import br.com.fiap.bo.UsuarioSoftSkillBO;
 import br.com.fiap.to.UsuarioSoftSkill;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -13,10 +14,10 @@ public class UsuarioSoftSkillResource {
 
     private final UsuarioSoftSkillBO usuarioSoftSkillBO = new UsuarioSoftSkillBO();
 
-    // ---------- GET: listar todas ----------
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarTodos() {
+    public Response listarTodos(@Valid UsuarioSoftSkill usuarioSoftSkill) {
         try {
             List<UsuarioSoftSkill> lista = usuarioSoftSkillBO.listarTodos();
             if (lista == null || lista.isEmpty()) {
@@ -32,11 +33,11 @@ public class UsuarioSoftSkillResource {
         }
     }
 
-    // ---------- GET: listar por usuário ----------
+
     @GET
     @Path("/usuario/{idUsuario}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarPorUsuario(@PathParam("idUsuario") int idUsuario) {
+    public Response listarPorUsuario(@Valid @PathParam("idUsuario") int idUsuario) {
         try {
             List<UsuarioSoftSkill> lista = usuarioSoftSkillBO.listarPorUsuario(idUsuario);
             if (lista == null || lista.isEmpty()) {
@@ -52,11 +53,11 @@ public class UsuarioSoftSkillResource {
         }
     }
 
-    // ---------- POST: inserir ----------
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response cadastrar(UsuarioSoftSkill usuarioSoftSkill) {
+    public Response cadastrar(@Valid UsuarioSoftSkill usuarioSoftSkill) {
         try {
             String resultado = usuarioSoftSkillBO.cadastrarUsuarioSoftSkill(usuarioSoftSkill);
             return Response.status(Response.Status.CREATED).entity(resultado).build();
@@ -67,12 +68,12 @@ public class UsuarioSoftSkillResource {
         }
     }
 
-    // ---------- PUT: atualizar ----------
+
     @PUT
     @Path("/{idUsuario}/{idSoftSkill}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response atualizar(@PathParam("idUsuario") int idUsuario,
+    public Response atualizar(@Valid @PathParam("idUsuario") int idUsuario,
                               @PathParam("idSoftSkill") int idSoftSkill,
                               UsuarioSoftSkill body) {
         try {
@@ -90,11 +91,11 @@ public class UsuarioSoftSkillResource {
         }
     }
 
-    // ---------- DELETE: excluir ----------
+
     @DELETE
     @Path("/{idUsuario}/{idSoftSkill}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response excluir(@PathParam("idUsuario") int idUsuario,
+    public Response excluir(@Valid @PathParam("idUsuario") int idUsuario,
                             @PathParam("idSoftSkill") int idSoftSkill) {
         try {
             UsuarioSoftSkill u = new UsuarioSoftSkill();

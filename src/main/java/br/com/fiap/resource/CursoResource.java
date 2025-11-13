@@ -1,6 +1,7 @@
 package br.com.fiap.resource;
 import br.com.fiap.bo.CursoBO;
 import br.com.fiap.to.Curso;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -14,7 +15,7 @@ public class CursoResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll() {
+    public Response findAll(@Valid CursoBO cursoBO) {
         List<Curso> resultado = null;
         Response.ResponseBuilder response;
 
@@ -36,7 +37,7 @@ public class CursoResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findById(@PathParam("id") int id) {
+    public Response findById(@Valid @PathParam("id") int id) {
         Curso resultado = null;
         Response.ResponseBuilder response;
 
@@ -58,7 +59,7 @@ public class CursoResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response save(Curso Curso) {
+    public Response save(@Valid Curso Curso) {
         String resultado;
         Response.ResponseBuilder response;
 
@@ -77,7 +78,7 @@ public class CursoResource {
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response update(Curso curso, @PathParam("id") int id) {
+    public Response update(@Valid Curso curso, @PathParam("id") int id) {
         curso.setIdCurso(id);
         String resultado;
         Response.ResponseBuilder response;
@@ -95,7 +96,7 @@ public class CursoResource {
 
     @DELETE
     @Path("/{id}")
-    public Response delete(@PathParam("id") int id) {
+    public Response delete(@Valid @PathParam("id") int id) {
         Response.ResponseBuilder response;
 
         try {

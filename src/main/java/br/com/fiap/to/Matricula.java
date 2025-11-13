@@ -1,11 +1,20 @@
 package br.com.fiap.to;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
+
 import java.time.LocalDate;
 
 public class Matricula {
     private int idMatricula;
+    @NotBlank(message = "O número do progresso é obrigatório.")
     private String numeroProgresso;
+
+    @NotNull(message = "A data de início é obrigatória.")
+    @PastOrPresent(message = "A data de início não pode ser futura.")
     private LocalDate dataInicio;
+
     private int idUsuario;
     private int idCurso;
 
