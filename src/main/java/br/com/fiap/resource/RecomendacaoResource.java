@@ -1,6 +1,6 @@
 package br.com.fiap.resource;
 
-import br.com.fiap.bo.ResultadoBO;
+import br.com.fiap.bo.RecomendacaoBO;
 import br.com.fiap.to.Recomendacao;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -11,7 +11,7 @@ import java.util.List;
 @Path("/recomendacoes")
 public class RecomendacaoResource {
 
-    ResultadoBO bo = new ResultadoBO();
+    RecomendacaoBO bo = new RecomendacaoBO();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -55,7 +55,7 @@ public class RecomendacaoResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscarPorId(@Valid @PathParam("id") int id) {
+    public Response buscarPorId( @PathParam("id") int id) {
         try {
             String resp = bo.buscarPorId(id);
             return Response.ok(resp).build();
@@ -65,20 +65,8 @@ public class RecomendacaoResource {
     }
 
     @GET
-    @Path("/usuario/{idUsuario}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarPorPaciente(@Valid @PathParam("idUsuario") int idPaciente) {
-        try {
-            List<Recomendacao> lista = bo.listarPorUsuario(idPaciente);
-            return Response.ok(lista).build();
-        } catch (Exception e) {
-            return Response.status(500).entity("Erro ao listar exames: " + e.getMessage()).build();
-        }
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response listarTodas(@Valid Recomendacao resultado) {
+    public Response listarTodas( Recomendacao resultado) {
         try {
             List<Recomendacao> lista = bo.listarTodas();
             return Response.ok(lista).build();

@@ -16,7 +16,7 @@ public class EnderecoResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@Valid EnderecoBO enderecoBO) {
+    public Response findAll() {
         ArrayList<Endereco> resultado = enderecoBO.listarTodos();
         Response.ResponseBuilder response = null;
         if (resultado != null) {
@@ -31,7 +31,7 @@ public class EnderecoResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findById(@Valid @PathParam("id") int id ) {
+    public Response findById( @PathParam("id") int id ) {
         Endereco resultado = enderecoBO.buscarPorId(id);
         Response.ResponseBuilder response = null;
         if (resultado != null) {

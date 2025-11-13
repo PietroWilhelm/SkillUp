@@ -19,7 +19,7 @@ public class UsuarioHardSkillResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@Valid UsuarioHardSkill usuarioHardSkill) {
+    public Response findAll() {
         Response.ResponseBuilder response;
         List<UsuarioHardSkill> resultado;
         try {

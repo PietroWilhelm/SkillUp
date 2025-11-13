@@ -17,7 +17,7 @@ public class HardSkillResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarTodos(@Valid HardSkillBO hardSkillBO) {
+    public Response listarTodos() {
         Response.ResponseBuilder response;
         List<HardSkill> lista;
 

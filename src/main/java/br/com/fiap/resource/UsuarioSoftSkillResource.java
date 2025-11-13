@@ -17,7 +17,7 @@ public class UsuarioSoftSkillResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarTodos(@Valid UsuarioSoftSkill usuarioSoftSkill) {
+    public Response listarTodos() {
         try {
             List<UsuarioSoftSkill> lista = usuarioSoftSkillBO.listarTodos();
             if (lista == null || lista.isEmpty()) {
@@ -37,7 +37,7 @@ public class UsuarioSoftSkillResource {
     @GET
     @Path("/usuario/{idUsuario}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listarPorUsuario(@Valid @PathParam("idUsuario") int idUsuario) {
+    public Response listarPorUsuario( @PathParam("idUsuario") int idUsuario) {
         try {
             List<UsuarioSoftSkill> lista = usuarioSoftSkillBO.listarPorUsuario(idUsuario);
             if (lista == null || lista.isEmpty()) {

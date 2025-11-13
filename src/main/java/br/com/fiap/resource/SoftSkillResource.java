@@ -17,7 +17,7 @@ public class SoftSkillResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@Valid SoftSkillBO softSkillBO) {
+    public Response findAll() {
         Response.ResponseBuilder response;
         List<SoftSkill> resultado;
 

@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ResultadoBO {
+public class RecomendacaoBO {
 
     public String inserir(Recomendacao resultado) throws SQLException, ClassNotFoundException {
         Connection conexao = ConnectionFactory.getConnection();

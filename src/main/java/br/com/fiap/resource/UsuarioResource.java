@@ -16,7 +16,7 @@ public class UsuarioResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@Valid UsuarioBO usuarioBO) {
+    public Response findAll(UsuarioBO usuarioBO) {
         ArrayList<Usuario> resultado = usuarioBO.listarTodos();
         Response.ResponseBuilder response = null;
         if (resultado != null) {
@@ -31,7 +31,7 @@ public class UsuarioResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findById(@Valid @PathParam("id") int id) {
+    public Response findById(@PathParam("id") int id) {
         Usuario resultado = usuarioBO.buscarUsuarioPorId(id);
         Response.ResponseBuilder response = null;
         if (resultado != null) {

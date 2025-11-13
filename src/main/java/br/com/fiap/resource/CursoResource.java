@@ -15,7 +15,7 @@ public class CursoResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(@Valid CursoBO cursoBO) {
+    public Response findAll() {
         List<Curso> resultado = null;
         Response.ResponseBuilder response;
 
@@ -37,7 +37,7 @@ public class CursoResource {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findById(@Valid @PathParam("id") int id) {
+    public Response findById( @PathParam("id") int id) {
         Curso resultado = null;
         Response.ResponseBuilder response;
 
