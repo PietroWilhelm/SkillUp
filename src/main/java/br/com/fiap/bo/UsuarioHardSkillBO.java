@@ -37,17 +37,6 @@ public class UsuarioHardSkillBO {
         return resultado;
     }
 
-    // Buscarhardkskill do usuário por ID
-    public String buscarFaqPorId(int idUsuario) throws ClassNotFoundException, SQLException {
-        Connection con = ConnectionFactory.getConnection();
-        UsuarioHardSkill f = new UsuarioHardSkill();
-        f.setIdUsuario(idUsuario);
-        UsuarioHardSkillDAO usuarioHardSkillDAO = new UsuarioHardSkillDAO(con);
-        String resultado = usuarioHardSkillDAO.listarUm(f);
-        ConnectionFactory.closeConnection();
-        return resultado;
-    }
-
     // Listar todos os SoftSkill
     public List<UsuarioHardSkill> listarTodosHardskils() throws ClassNotFoundException, SQLException {
         Connection con = ConnectionFactory.getConnection();
